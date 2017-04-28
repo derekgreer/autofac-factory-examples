@@ -1,0 +1,25 @@
+{
+  "name": "autofac-factory-examples",
+  "version": "0.0.1",
+  "configuration": "Release",
+  "description": "A set of Autofac factory examples",
+  "dotnetPath": "\"c:/Program Files/dotnet/dotnet.exe\"",
+  "scripts": {
+    "demo": "npm-run-all build execute",
+    "build": "npm-run-all build:*",
+    "build:restore": "cross-env globstar --ignore '-*' -- ${npm_package_dotnetPath} restore \"**/*.sln\" /p:Version=${npm_package_version}",
+    "build:compile": "cross-env globstar --ignore '-*' -- ${npm_package_dotnetPath} msbuild \"**/*.sln\" /target:Clean;Build /p:Configuration=${npm_package_configuration} /p:Version=${npm_package_version}",
+    "execute": "cross-env globstar --ignore '-*' -- ${npm_package_dotnetPath} \"**/bin/**/AutofacFactoryExamples.dll\""
+  },
+  "keywords": [
+    "logging"
+  ],
+  "author": "Derek Greer",
+  "dependencies": {},
+  "devDependencies": {
+    "cross-env": "^4.0.0",
+    "cross-run": "^1.0.1",
+    "globstar": "^1.0.0",
+    "npm-run-all": "^4.0.2"
+  }
+}
